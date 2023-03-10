@@ -21,61 +21,46 @@ provide systematic, consistent, and reliable measurements of tidal coupling over
 a broad range of parameters, directly usable to model the effect of tides for
 almost all known exoplanet systems.
 
-Thanks to past allocations on stampede 2 we have been able to complete all
-calculations for three publications submitted to refereed journals, as well as
-present results at four conferences, and work is on-going on three additional
-publications, which we expect to complete within the next 6 months.
+Thanks current and past allocations on stampede 2 we have been able to complete
+all calculations for four publications in refereed journals, present results at
+four conferences, and generate a Ph.D. dissertation (successfully defended in
+Fall 2022). The current allocation on Lonestar6 has allowed us to complete all
+analysis for one more publication, the article text is currently being
+finalized, and we expect to submit within a month. Additional work is on-going
+on two more publication, one of which we expect to complete within the next 3
+months (using Lonestar6 resources we are requesting in this proposal) and the
+other within 6 to 9 months.
 
 \section{Resource Justification/Computational Plan}
 
 We plan to perform Bayesian analysis to constrain a generic parametrized tidal
 dissipation model against observations of the eccentricity and spin
-distributions of binary star systems. In particular we will use Markov Chain
-Monte Carlo, using the \texttt{emcee}
-package\footnote{\url{https://emcee.readthedocs.io/en/stable/}}. We have the
-code for two projects we plan to complete over the next year fully developed and
-have been using it over the past 2 years on stampede2 and an HPC cluster at UT
-Dallas called Ganymede.
+distributions of binary star and exoplanet systems. In particular we will use
+Markov Chain Monte Carlo, using the \texttt{emcee}
+package\footnote{\url{https://emcee.readthedocs.io/en/stable/}}.
 
-
-Our applications require only small amount of RAM and rely on widely used and
+We have fully developed and are already using all the code for the analysis that
+we are requesting additional allocation for on both Lonestar6 and Stampede2. Our
+applications require only small amount of RAM and rely on widely used and
 extensively tested/benchmarked open source packages for parallelizing
-computations. We request a start-up allocation on the Lonestar6 system in order
-to learn to use that system equally efficiently by the time stampede2 is
-decommissioned, and also in order to get reliable measurements on how quickly we
-accumulate MCMC steps so we can estimate reliably the computational requirements
-for an eventual research allocation request when the proposal window opens.
+computations.
 
+We have begun the eccentricity analysis of 75 exoplanet systems in order to
+measure the tidal friction in gas giant planets. Using 1\,000 SUs of the current
+Lonestar6 allocation, we were able to generate roughly 4\% of the final number
+of Markov chain samples required to reliably probe the probability distribution
+of model parameters, hence we expect the complete analysis will require
+approximately 25\,000 SUs. The project currently has 5\,000 SUs remaining of the
+current allocation, hence we are requesting an additional 20\,000 SUs to
+complete the project.
 
-A naive scaling based on threads and clock rate compared to stampede 2, and the
-currently completed computations suggest we will ultimately need more than
-60\,000 SUs on Lonestar6 in addition to the 15\,000 SUs we were recently awarded
-on Stampede2 to complete the computations of the three projects we are currently
-working on. These were computed as follows:
+We described this particular application as one of the future projects we plan
+to pursue using LS6 in the original allocation request predicting it would
+require 24\,000 SUs (almost identical to the updated estimate above).
 
-Using 19\,000 SUs on stampede2, together with additional (unmetered)
-computations on the UT Dallas Ganymede cluster, we recently completed the
-analysis of the eccentricity of 38 binary stars. We plan to apply the exact same
-analysis to 93 additional systems. Scaling by 96 threads of stampede2 node at
-2.1 GHz vs 128 threads at 2.45 GHz for Lonestar6, we estimate this project will
-require 30\,000 SUs on Lonestar6. 
-
-A different analysis method was applied to measured spins of 44 binary stars,
-consuming 10\,000 SUs on Stampede2 + unknown but small contribution from
-Ganymede. We are currently ready (all input data is collected) to apply exactly
-the same analysis to 99 additional systems. Again scaling by threads and clock
-rate, we expect this will consume $\sim14\,000$ SUs on Lonestar6.
-
-Finally, we plan to carry out eccentricity analysis of 75 exoplanet systems in
-order to measure the tidal friction in gas giant planets. Calculating
-evolutions of exoplanet systems takes similar time to calculating binary star
-evolutions, hence we can scale the 19\,000 Stampede2 SUs to analyze 38 systems
-mentioned above to estimate we need $\sim24\,000$ Lonestar6 SUs for this
-analysis.
-
-Finally, we subtract the already awarded $15\,000$ SUs on stampede2, which
-approximately scale to $9\,600$ equivalent SUs on Lonestar6 to arrive at our
-final estimate of additional $\sim60\,000$ Sus on Lonestar6 required to complete
-all 3 projects
+It This is almost exactly the number of SUs we predicted this project will take
+in the original proposal (24\,000SUs vs 25\,000SUs). Similarly, the already
+completed project with the current allocation also matched almost exactly the
+allocation requested.
 
 \end{document}
