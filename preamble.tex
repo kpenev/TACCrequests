@@ -1,0 +1,89 @@
+\renewcommand\rmdefault{phv}
+
+\usepackage{import}
+\usepackage{comment}
+\usepackage{soul}
+\input{newcommand_gen.tex}
+\input{newcommand_spec.tex}
+
+\usepackage[font={normal,it}]{caption}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{floatrow}
+\usepackage{wrapfig}
+\usepackage[pdftex]{graphics,graphicx}
+\usepackage{epstopdf}
+\graphicspath{ {project_description/figures/} }
+\usepackage{pslatex}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{sectsty}
+\allsectionsfont{\normalsize}
+\usepackage{natbib,amsmath,amssymb}
+\usepackage{sidecap}
+\usepackage{aas_macros}
+\usepackage{multicol}
+\usepackage{relsize}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage{booktabs}
+
+\usepackage{tabularx}
+\usepackage{makecell}
+
+\usepackage{sidecap}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\usepackage{multirow}
+\usepackage{spverbatim}
+\usepackage{pdfpages}
+
+\usepackage{enumitem}
+\setlist{nosep}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+\usepackage[compact]{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
+%\titlelabel{\roman{\thetitle}.\quad}
+%\titleformat{\paragraph}
+%    {\normalfont\bfseries}
+%    {\theparagraph\quad}
+%    {0pt}
+%	{\vspace{-3mm}}
+
+\widowpenalty 0
+\widowpenalties 0
+\clubpenalties 1 0
+
+\renewcommand\bibsection{}
+
+\chead{}
+
+\rhead{\thepage}
+
+\lfoot{}
+
+\cfoot{}
+
+\rfoot{}
+
+\newlength{\defaultparfillskip}
+\setlength{\defaultparfillskip}{\parfillskip}
+
+\newlength{\defaultparindent}
+\setlength{\defaultparindent}{\parindent}
+
+\definecolor{highlightcolor}{rgb}{1.00, 0.50, 0.50}%{0.0274, 0.7215, 0.5019}
+
+\sethlcolor{highlightcolor}
+
+%\renewcommand{\hl}[1]{\pdfliteral direct {2 Tr 0.5 w}#1\pdfliteral direct {0 Tr 0 w}}
+
+\title{\vspace{-20mm}Measuring Tidal Dissipation of Low Mass Stars and Giant Planets}
+\date{}
