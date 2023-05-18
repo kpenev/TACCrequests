@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 
 \input{preamble}
 
@@ -22,13 +22,13 @@ a broad range of parameters, directly usable to model the effect of tides for
 almost all known exoplanet systems.
 
 The Lonestar6 allocation for the past year has allowed us to complete all
-analysis for two more publication. One article was submitted to the Monthly
-Notices of the Royal Astronomical Society (MNRAS, one of the premier
-astrophysics journals) on April 4 2023 and we are hoping a peer review report
-will be provided soon. The second publication has a complete write-up and is
-undergoing final round of reviews from all authors prior to submission (also to
-MNRAS). We expect submitting within the next 2 weeks. Both articles acknowledge
-use of TACC resources.
+analysis for two publications. One article was submitted to the Monthly Notices
+of the Royal Astronomical Society (MNRAS, one of the premier astrophysics
+journals) on April 4 2023 and we are hoping a peer review report will be
+provided soon. The second publication has a complete write-up and is undergoing
+final round of reviews from all authors prior to submission (also to MNRAS). We
+expect submitting within the next 2 weeks. Both articles acknowledge use of TACC
+resources.
 
 We request resources for two projects that we expect to complete over the
 following year:
@@ -44,54 +44,55 @@ observations of the eccentricity of the orbits of these binary stars.
 
 \textbf{Project 2:} We are also in the beginning stages of the software
 development for a project that aims to prepare an approximately 10 times larger,
-but otherwise very similar catalog to the one we above. The catalog will be
-based on observations from space (from the TESS satellite) of the dimming of the
-stars as they block each other's light. Thanks to the unprecedented precision of
-the observations and the fact that TESS has observed the entire sky, this
-catalog will provide a unique combination of very precisely determined physical
-parameters for a very large collection of very bright stars. We plan to use this
-catalog to explore even more tidal physics (though not during the following
-year), but it will also provide invaluable input data for studies by many other
-research groups as is evidenced by the much smaller catalog mentioned above.
-This project will also rely on MCMC analysis, this time using models of the
-eclipses and other effects detectable in these binary stars to compare to the
-observed combined brightness of each system by TESS.
+but otherwise very similar catalog to the one used by project 1. The catalog
+will be based on observations from space (from the TESS satellite) of the
+dimming of the stars as they block each other's light. Thanks to the
+unprecedented precision of the observations and the fact that TESS has observed
+the entire sky, this catalog will provide a unique combination of very precisely
+determined physical parameters for a very large collection of very bright stars.
+We plan to use this catalog to explore even more tidal physics (though not
+during the coming year), but it will also provide invaluable input data for
+studies by many other research groups as is evidenced by the much smaller
+catalog mentioned above.  This project will also rely on MCMC analysis, this
+time using models of the eclipses and other effects detectable in these binary
+stars to compare to the observed brightness as a function of time of each system
+by TESS.
 
 \section{Resource Justification/Computational Plan}
 
 We will use the \texttt{emcee}
 package\footnote{\url{https://emcee.readthedocs.io/en/stable/}} for the MCMC
 analysis. Both applications described above require only small amount of RAM and
-relies on widely used and extensively tested/benchmarked open source packages
+rely on widely used and extensively tested/benchmarked open source packages
 for parallelizing the computations.
 
 We have developed and are already using much of the code for project 1,
 including for the two publications produced with last year's allocation.  The
-remaining modifications will not affect the computational requirements. In fact
-the computing resources per binary star will be almost identical to those of the
+remaining modifications will not affect the computational requirements. The
+computing resources per binary star will be almost identical to those of the
 recently submitted article, which consumed 20\,000 SUs on Lonestar6 for the
 analysis of 70 binaries. We already have all the data for the proposed tidal
 analysis at hand -- 184 binaries -- simple scaling shows 53\,000 SUs will be
 required for the successful completion of project 1.
 
 The requirements of project 2 are far less straightforward to estimate since so
-far we only implemented parts of the calculations required. Nonetheless we that
-allows us to obtain a lower limit. The computationally expensive part of the
+far we only implemented parts of the calculations required. Nonetheless that is
+sufficient to obtain a lower limit. The computationally expensive part of the
 modeling consists of two parts: modeling the eclipses of the two stars and
 modeling their out of eclipse variability. We have a model for the former, which
-we estimate should be the more computationally expensive task. A similar
-analysis was performed by \citet{Windemuth_et_al_19} using data from a different
-satellite. They showed $10^6$ \texttt{emcee} steps of 128 coupled MCMC chains
-were required for the samples to converge to a stable posterior distribution. We
-carried out several two hour MCMC runs on the Lonestar6 debugging partition
-finding that approximately 13\,000 MCMC steps per hour are produced using 8
-parallel processes for a single binary star. We will run 16 stars per node each
-using 8 parallel processes. We found that using up to 8 processes resulted in 7
-times more steps per hour than using only 1 process. Hence, we were making
-efficient use of the node. With over 1500 systems to analyze, we estimate
-at least 9\,000 SUs will be required for models including only eclipses. We
-request 12\,000 SUs approximately accounting for the less computationally
-expensive but non-negligible modeling of out-of-eclipse variability.
+is the more computationally expensive of the two. A similar analysis was
+performed by \citet{Windemuth_et_al_19} using data from a different satellite.
+They showed $10^6$ \texttt{emcee} steps of 128 coupled MCMC chains were required
+for the samples to converge to a stable posterior distribution. We carried out
+several two hour MCMC runs on Lonestar6, finding that approximately 13\,000 MCMC
+steps per hour are produced using 8 parallel processes per binary star.  We will
+run 16 stars per node each using 8 parallel processes. We found that using up to
+8 processes resulted in 7 times more steps per hour than using only 1 process.
+Hence, we were making efficient use of the node. With over 1500 systems to
+analyze, we estimate at least 9\,000 SUs will be required for models including
+only eclipses. We request 12\,000 SUs approximately accounting for the less
+computationally expensive but non-negligible modeling of out-of-eclipse
+variability.
 
 Thus we request a combined 65\,000 SUs to support both projects described above.
 
