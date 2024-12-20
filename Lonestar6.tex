@@ -30,9 +30,7 @@ regional conferences, including American Astronomical Society and the American
 Physical Society. Two successful PhD degrees were defended based on this work.
 We have also secured grant funding from NASA to support the proposed work and
 its extensions over the following three years under two separate grants. The
-first (80NSSC23K1486) started Sep 2023 and the second starting May 2025. The
-latter supporting work to be accomplished past the period of this request (late
-starting date is due to overlap in activities with 80NSSC23K1486).
+first (80NSSC23K1486) started Sep 2023 and the second starting May 2025.
 
 Per the NASA grants, we request resources for two projects that we expect to
 complete over the following year:
@@ -71,39 +69,59 @@ observed brightness as a function of time of each system by TESS.
 We will use the \texttt{emcee}
 package\footnote{\url{https://emcee.readthedocs.io/en/stable/}} for the MCMC
 analysis. Both applications described above require only small amount of RAM and
-rely on widely used and extensively tested/benchmarked open source packages
-for parallelizing the computations.
+rely on widely used and extensively tested/benchmarked open source packages for
+parallelizing the computations.
 
-We have developed and are already the code for project 1. Much of it has already
-been used on TACC, including for the three most recent publications by our
-group. The modifications compared to those publications do not affect the
-computational requirements. The computing resources per binary star will be
-almost identical to those of a recently published article, which consumed
-20\,000 SUs on Lonestar6 for the analysis of 70 binaries. We already have all
-the data for the proposed tidal analysis at hand -- 184 binaries -- simple
-scaling shows 53\,000 SUs will be required for the successful completion of
-project 1.
+We have developed and are already using the code for project 1 on TACC and we
+expect to complete the rest of the project without any further modifications to
+the code. So far we have completed about 13\% of the sampling, consuming 7000
+SUs, thus we estimate that the remaining 85\% will require 45\,000 SUs.
 
 The requirements of project 2 are far less straightforward to estimate since so
-far we only implemented parts of the calculations required. Nonetheless that is
-sufficient to obtain a lower limit. The computationally expensive part of the
-modeling consists of two parts: modeling the eclipses of the two stars and
-modeling their out of eclipse variability. We have a model for the former, which
-is the more computationally expensive of the two, and a simplified model for the
-latter. A similar analysis was performed by \citet{Windemuth_et_al_19} using
-data from a different satellite.  They showed $10^6$ \texttt{emcee} steps of 128
-coupled MCMC chains were required for the samples to converge to a stable
-posterior distribution. We carried out several two hour MCMC runs on Lonestar6,
-finding that approximately 13\,000 MCMC steps per hour are produced using 8
-parallel processes per binary star.  We will run 16 stars per node each using 8
-parallel processes. We found that using up to 8 processes resulted in 7 times
-more steps per hour than using only 1 process.  Hence, we were making efficient
-use of the node. With over 1500 systems to analyze, we estimate at least 9\,000
-SUs will be required for models including only eclipses. We request 12\,000 SUs
-approximately accounting for the less computationally expensive but
-non-negligible modeling of out-of-eclipse variability.
+far we have a working model for eclipsing binaries, but do not yet have fully
+working sampling so we are forced to estimate how many samples will be required
+for the MCMC sampling to converge. A similar analysis was performed by
+\citet{Windemuth_et_al_19} using data from a different satellite. They showed
+$10^6$ \texttt{emcee} steps of 128 coupled MCMC chains were required for the
+samples to converge to a stable posterior distribution. Since our previous
+proposal we have completed building the full eclipsing binary model and are in
+the process of implementing and testing the MCMC sampling. We carried out three
+two hour MCMC runs on Lonestar6 with the, finding that approximately 10\,000
+MCMC steps per hour are produced using 8 parallel processes per binary star. We
+will run 16 stars per node each using 8 parallel processes. We found that using
+up to 8 processes resulted in 7 times more steps per hour than using only 1
+process. Hence, we were making efficient use of the node. We estimate 16\,000
+SUs will be required to complete analysis of the approximately 2500 systems we
+plan to include in the first release of the catalog.
 
-Thus we request a combined 65\,000 SUs to support both projects described above.
+Thus we request a combined 60\,000 SUs to support both projects described above.
+
+\section{Progress Report}
+
+Responding to the request from most the recent review, we provide here a brief
+progress report.
+
+\textbf{Project 1:} We have completed the software development for the project
+and are now in the process of running the MCMC analysis utilizing TACC
+resources. We have already finished sampling for the first 9 systems and the
+rest are in progress. Our allocation for July 2023 --- June 2024 was sparsely
+utilized because we had to redesign the sampling code we had implemented. As a
+result we were awarded just 10\,000 SUs of the 65\,000 SUs we requested for July
+2024 --- June 2025. The code is now in its final fully working state. As is
+evidenced by our recent use of the existing allocation, we are confident we will
+make efficient use of this allocation if approved. We expect the first
+publication to be submitted within the next three months.
+
+\textbf{Project 2:} We have completed and thoroughly tested 90\% of the software
+development for the second project described above. Namely, we now have a fully
+functional model for predicting what should be observed for a binary given
+assumptions for its physical parameters. The remaining effort is to use that
+model to calculate MCMC likelihoods and run sampling. This has allowed us to
+refine the estimated SUs required to complete the project, though significant
+uncertainty still remains due to the unknown number of samples required for
+convergence.
+
+\newpage
 
 \section*{\centering{\Large References and Citations}}
 \addcontentsline{toc}{section}{\protect{\numberline{\thesection}}References and
